@@ -36,8 +36,13 @@
            title = data[0].value,
            content = data[1].value;
            
-           Materialize.toast('Submit successful', 2000)
-        
+          
+           
+           
+           if (content === "" || title === "") {
+                Materialize.toast('Empty title of statement', 2000);
+           }
+        else {
            
        var dataStore = Backendless.Persistence.of(Posts);
        
@@ -51,6 +56,7 @@
        
        this.title.value = "";
        this.content.value = "";
+   }
    });
    
    $(document).on('click', '.logout', function (){
