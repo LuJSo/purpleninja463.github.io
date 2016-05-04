@@ -26,13 +26,6 @@ $(function () {
 
 function Posts(args){
     args = args || {};
-    
-      var taskStorage = Backendless.Persistence.of( Tasks);
-    var dataQuery = {
-         condition: "author = " + YOUR_ID_HERE
-    };
-    var myTasks = taskStorage.find( dataQuery );
-    
     this.title= args.title || "";
     this.content = args.content || "";
     this.authorEmail = args.authorEmail || "";
