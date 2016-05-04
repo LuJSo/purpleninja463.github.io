@@ -1,11 +1,12 @@
  <!DOCTYPE html>
   <html>
-    <head>
+     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection">
       <link type="text/css" rel="stylesheet" href="css/List.css">
+      <link rel="icon" href="data:;base64,iVBORwOKGgo=">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,33 +23,17 @@
  
                 <ul class="sub-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="List.html">List posts</a></li>
+                    <li><a href="admin.html">List posts</a></li>
                 </ul>
             </li>
             
         </ul>
     </nav>
 </div>
-        </header>
         
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <script type="text/javascript" src="js/handlebars-v4.0.5.js"></script>
-      <script type="text/javascript" src="libs/backendless.js"></script>
-      <script type="text/javascript" src="js/List.js"></script>
-      
-      <script id="List-template" type="text/x-handbars-template">
-          {{#each posts}}
-        <div class="List-post">
-            <h2 class="List-post-title">{{title}}</h2>
-            <p class="List-post-meta">At {{format created}} by {{authorEmail}}</p>
-            <div>{{content}}</div>
-        </div>
-      {{/each}}
-      </script>
-      
-       <table>
+          <h1 class="center-align">Todo list</h1>  
+            
+            <table>
         <thead>
           <tr>
               <th data-field="id">Todo</th>
@@ -62,8 +47,49 @@
           </tr>
         </tbody>
       </table>
+            
+            
+        </header>
+        
        
- 
+        
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>     
+      <script type="text/javascript" src="libs/backendless.js"></script>
+      <script type="text/javascript" src="js/List.js"></script>
+      <script src="js/handlebars-v4.0.5.js" type="text/javascript"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+      
+      
+      
+        <main>
+            <div class="container">
+                <div class ="row">
+                    
+                </div>
+                <div class = "row">
+                    <div class="col s12 main-container">
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+      
+      
+       
+ <script id="blogs-template" type="text/x-handbars-template">
+          {{#each posts}}
+        <div class="blog-post">
+        <div class="chip">
+        <i class="material-icons ">done</i>
+        <i class="material-icons deleteA" type="submit" name="action" data={{objectId}}>delete</i>
+            <h2 class="blog-post-title">{{title}}</h2>
+            <p class="blog-post-meta">At {{format created}} by {{authorEmail}}</p>
+            <div>{{content}}</div>
+        </div>
+      {{/each}}
+      </script>
       
       
     </body>

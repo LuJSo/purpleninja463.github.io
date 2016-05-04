@@ -3,16 +3,37 @@ $(function () {
     SECRET_KEY = "737F8324-CA40-C350-FF69-0DBFD6750000",
     VERSION = "v1";
     
-    Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
+     Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
     
-    var dataStore = Backendless.Persistence.of(Posts);
-    var post = new Posts({title: "My first blog post", content:"My first blog post contnet", authorEmail:"email@email.com"});
-    dataStore.save(post);
+    var postsCollection = Backendless.Persistence.of(Posts).find();
+    
+    console.log(postsCollection);
+    
+    var wrapper = {
+        posts: postsCollection.data
+    };
+    
+    Handlebars.registerHelper('format', function (time) {
+        return moment(time).format("dddd, MMMM Do YYYY");
+    });
+    
+    var blogScript = $("#blogs-template").html();
+    var blogTemplate = Handlebars.compile(blogScript);
+    var blogHTML = blogTemplate(wrapper);
+    
+    $('.main-container').html(blogHTML);
 });
 
-function Posts(args) {
+function Posts(args){
     args = args || {};
-    this.title = args.title || "";
+    this.title= args.title || "";
     this.content = args.content || "";
     this.authorEmail = args.authorEmail || "";
 }
+
+$(document).on('click', '.deleteA',function (event){
+ Materialize.toast('Deleted', 1500);
+ Backendless.Persistence.of(Posts).remove(event.target.attributes.data.nodeValue);
+ 
+});
+
